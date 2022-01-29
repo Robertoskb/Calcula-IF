@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IFCALC</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+  
+    
+</head>
+<body>
+    <header>
+        <h1>Calcule suas Notas do IF</h1>
+    </header>
+
+    <main>
+        <section>
+        
+            <form action="">
+
+                <legend>Nota: 0-100</legend>
+    
+                <div class="bis">
+                    <div class="bi">
+                        <label>1º Bimestre:</label>
+                        <input id="input1" min="0" max="100" type="number">
+                    </div>
+
+                    <div class="bi">
+                        <label>2º Bimestre:</label>
+                        <input id="input2" min="0" max="100" type="number">
+                    </div>
+                    <div class="bi">
+                        <label>3º Bimestre:</label>
+                        <input id="input3" min="0" max="100" type="number">
+                    </div>
+                    <div class="bi">
+                        <label>4º Bimestre:</label>
+                        <input id="input4" min="0" max="100" type="number">
+                    </div>
+                    <div class="bi">
+                        <label>Prova Final:</label>
+                        <input id="input5" min="0" max="100" type="number">
+                    </div>
+                </div>
+
+                <div class="button"><input type="button" value="Calcular" onclick="calculate()"></div>
+                
+            </form>
+            
+            <p id="text"></p>
+            
+            
+        </section>
+
+        
+    </main>
+
+    <script src="app.js"></script>
+    
+   
+    
+</body>
+
+</html>

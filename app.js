@@ -16,28 +16,26 @@ function calculate(){
     var score3 = parseInt(document.getElementById('input3').value)
     var score4 = parseInt(document.getElementById('input4').value)
     var score5 = parseInt(document.getElementById('input5').value)
+    
+    
 
     var scores = [score1, score2, score3, score4]
 
-    scores.forEach(function(score){
-        if(isNaN(score)){
+    scores.every( score =>{if(isNaN(score) || score < 0 || score > 100 || score5 > 100 || score5 < 0){
            createtags.innerHTML = '<h1>Notas Inválidas</h1>'
-            
-        }
-
-        else if (isNaN(score5)){ 
-            createtags.innerHTML = no_final_test(score1, score2, score3, score4, score5)
-
-            }
-
-        else {
-            createtags.innerHTML = final_test(score1, score2, score3, score4, score5)
-
+           return false
+        }})
+    
+    if (isNaN(score5)){ 
+        createtags.innerHTML = no_final_test(score1, score2, score3, score4, score5)
 
         }
-            
-        
-    })       
+
+    else {
+        createtags.innerHTML = final_test(score1, score2, score3, score4, score5)
+
+
+    }
     
 }
 

@@ -24,9 +24,10 @@ function calculate(){
     scores.every( score =>{if(isNaN(score) || score < 0 || score > 100 || score5 > 100 || score5 < 0){
            createtags.innerHTML = '<h1>Notas Inválidas</h1>'
            return false
-        }})
+        }
     
-    if (isNaN(score5)){ 
+         
+    else if (isNaN(score5)){ 
         createtags.innerHTML = no_final_test(score1, score2, score3, score4, score5)
 
         }
@@ -36,6 +37,8 @@ function calculate(){
 
 
     }
+    })
+   
     
 }
 

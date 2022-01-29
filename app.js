@@ -2,32 +2,30 @@ var peso1 = 2
 var peso2 = 2
 var peso3 = 3
 var peso4 = 3
-
+//'<h1>Notas Inválidas</h1>'
 var media_necessaria = 60
 var soma_pesos = peso1+peso2+peso3+peso4
 var score_necessario = media_necessaria * soma_pesos
+
 
 function calculate(){
     const createtags = document.getElementById('text')
 
 
     var score1 = parseInt(document.getElementById('input1').value)
+    if (isNaN(score1) || score1 < 0 || score1 > 100){createtags.innerHTML='<h1>Notas Invalidas</h1>'; return}
     var score2 = parseInt(document.getElementById('input2').value)
+    if (isNaN(score2) || score2 < 0 || score2 > 100){createtags.innerHTML='<h1>Notas Invalidas</h1>'; return}
     var score3 = parseInt(document.getElementById('input3').value)
+    if (isNaN(score3) || score3 < 0 || score3 > 100){createtags.innerHTML='<h1>Notas Invalidas</h1>'; return}
     var score4 = parseInt(document.getElementById('input4').value)
+    if (isNaN(score4) || score4 < 0 || score4 > 100){createtags.innerHTML='<h1>Notas Invalidas</h1>'; return}
     var score5 = parseInt(document.getElementById('input5').value)
+    if (score5 < 0 || score5 > 100){createtags.innerHTML='<h1>Notas Invalidas</h1>'; return}
     
     
 
-    var scores = [score1, score2, score3, score4]
-
-    scores.every( score =>{if(isNaN(score) || score < 0 || score > 100 || score5 > 100 || score5 < 0){
-           createtags.innerHTML = '<h1>Notas Inválidas</h1>'
-           return false
-        }
-    
-         
-    else if (isNaN(score5)){ 
+    if (isNaN(score5)){ 
         createtags.innerHTML = no_final_test(score1, score2, score3, score4, score5)
 
         }
@@ -37,7 +35,6 @@ function calculate(){
 
 
     }
-    })
    
     
 }

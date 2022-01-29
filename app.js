@@ -21,17 +21,17 @@ function calculate(){
 
     scores.forEach(function(score){
         if(isNaN(score)){
-           return createtags.innerHTML = '<h1>Notas Inválidas</h1>'
+           createtags.innerHTML = '<h1>Notas Inválidas</h1>'
             
         }
 
         else if (isNaN(score5)){ 
-            return createtags.innerHTML = no_final_test(score1, score2, score3, score4, score5)
+            createtags.innerHTML = no_final_test(score1, score2, score3, score4, score5)
 
             }
 
         else {
-            return createtags.innerHTML = final_test(score1, score2, score3, score4, score5)
+            createtags.innerHTML = final_test(score1, score2, score3, score4, score5)
 
 
         }

@@ -27,7 +27,7 @@ section {
     
     margin: auto;
 
-    max-width: 400px;
+    max-width: 500px;
     min-width: 300px;
     
     border-bottom-left-radius: 5px;
@@ -45,12 +45,14 @@ legend{text-align: center; padding-bottom:10px;}
 div.bi{
     padding-bottom: 5px;
     position: relative;
+
 }
 
 div.bis{
     display:flex;
     flex-direction: column;
     gap: 10px 30px;
+    
     
 }
 
@@ -88,7 +90,7 @@ input[type="number"]{
     border-bottom: 2px solid rgba(0, 0, 0);
     
     position: absolute;
-    transform: translatex(500%)
+    transform: translatex(400%)
 
     
 }

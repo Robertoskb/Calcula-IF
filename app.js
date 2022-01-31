@@ -21,9 +21,10 @@ function calculate(){
     score4 = parseFloat(document.getElementById('input4').value)  
     score5 = parseFloat(document.getElementById('input5').value)
 
+    /*verifca se as notas são válidas */
+
     if (score5 < 0 || score5 > 100){createtags.innerHTML='<h1>Notas Invalidas</h1>'; return}
 
-    /*verifca se algumas das quatro primeiras notas são invalidas, a quinta nota a quinta nota é a da prova final e pode ou não ser NaN */
 
     let arr = [score1, score2, score3, score4]
     for (let pos in arr){

@@ -7,13 +7,19 @@ let media_necessaria = 60
 let soma_pesos = peso1+peso2+peso3+peso4
 let score_necessario = media_necessaria * soma_pesos
 
+let score1
+let score2 
+let score3
+let score4
+let score5
+
 function calculate(){
     const createtags = document.getElementById('text')
-    const score1 = parseFloat(document.getElementById('input1').value)  
-    const score2 = parseFloat(document.getElementById('input2').value)   
-    const score3 = parseFloat(document.getElementById('input3').value)
-    const score4 = parseFloat(document.getElementById('input4').value)  
-    const score5 = parseFloat(document.getElementById('input5').value)
+    score1 = parseFloat(document.getElementById('input1').value)  
+    score2 = parseFloat(document.getElementById('input2').value)   
+    score3 = parseFloat(document.getElementById('input3').value)
+    score4 = parseFloat(document.getElementById('input4').value)  
+    score5 = parseFloat(document.getElementById('input5').value)
 
     if (score5 < 0 || score5 > 100){createtags.innerHTML='<h1>Notas Invalidas</h1>'; return}
 
@@ -30,11 +36,11 @@ function calculate(){
     /* Se score5 não for um numero signfica que o aluno não fez a prova final */
 
     createtags.innerHTML = (isNaN(score5)) 
-    ? no_final_test(score1, score2, score3, score4) 
-    : final_test(score1, score2, score3, score4, score5)    
+    ? no_final_test() 
+    : final_test()    
 }
 
-function no_final_test(score1, score2, score3, score4){ 
+function no_final_test(){ 
     let media =  Math.round((peso1*score1 + peso2*score2 + peso3*score3 + peso4*score4)/10) //calcula a media dos quatro bimestres sem a prova final
     let resultado = result(media, false, score1, score2, score3, score4) //chama a função result que retorna a situação do aluno e uma mensagem
     let sit = resultado.sit
@@ -50,10 +56,10 @@ function no_final_test(score1, score2, score3, score4){
     <p>${msg}</p>`    
 }
 
-function result(media, provafinal = false, score1, score2, score3, score4){
+function result(media, provafinal = false){
     let sit = ''
     let msg = ''
-    let min = Math.round(score_min(media, score1, score2, score3, score4))
+    let min = Math.round(score_min(media))
 
     if(media >= media_necessaria){
         sit = 'Aprovado'
@@ -73,9 +79,9 @@ function result(media, provafinal = false, score1, score2, score3, score4){
     return{sit, msg}
 }
 
-function final_test(score1, score2, score3, score4, score5){
-    let media = media_final(score1, score2, score3, score4, score5) 
-    let resultado = result(media, true, score1, score2, score3, score4)
+function final_test(){
+    let media = Math.round(media_final())
+    let resultado = result(media, true)
     let msg = resultado.msg
     let sit = resultado.sit
 
@@ -89,18 +95,18 @@ function final_test(score1, score2, score3, score4, score5){
     <p>${msg}</p>`
 }
 
-function media_final(score1, score2, score3, score4, score5){ 
+function media_final(){ 
     //calcula a nota do aluno com a prova final, são 5 formulas, a que tiver o maior resultado será retornada
-    let simple_score = Math.round(((((score1 * peso1) + (score2 * peso2) + (score3 * peso3) + (score4 * peso4)) / soma_pesos) + score5) / 2)
-    let scoreSub1 = Math.round(((score5 * peso1) + (score2 * peso2) + (score3 * peso3) + (score4 * peso4))/soma_pesos)
-    let scoreSub2 = Math.round(((score1 * peso1) + (score5 * peso2) + (score3 * peso3) + (score4 * peso4))/soma_pesos)
-    let scoreSub3 = Math.round(((score1 * peso1) + (score2 * peso2) + (score5 * peso3) + (score4 * peso4))/soma_pesos)
-    let scoreSub4 = Math.round(((score1 * peso1) + (score2 * peso2) + (score3 * peso3) + (score5 * peso4))/soma_pesos)
+    let simple_score = ((((score1 * peso1) + (score2 * peso2) + (score3 * peso3) + (score4 * peso4)) / soma_pesos) + score5) / 2
+    let scoreSub1 = ((score5 * peso1) + (score2 * peso2) + (score3 * peso3) + (score4 * peso4))/soma_pesos
+    let scoreSub2 = ((score1 * peso1) + (score5 * peso2) + (score3 * peso3) + (score4 * peso4))/soma_pesos
+    let scoreSub3 = ((score1 * peso1) + (score2 * peso2) + (score5 * peso3) + (score4 * peso4))/soma_pesos
+    let scoreSub4 = ((score1 * peso1) + (score2 * peso2) + (score3 * peso3) + (score5 * peso4))/soma_pesos
 
     return Math.max(...[simple_score, scoreSub1, scoreSub2, scoreSub3, scoreSub4])
 }
 
-function score_min(media, score1, score2, score3, score4){
+function score_min(media){
     //calcula a nota necessaria na prova final, são 5 formulas, a que tiver o menor resultado será retornada
     let simple_score = (media_necessaria * 2) - media
     let scoreSub1 =  (score_necessario - ((score2*peso2) + (score3*peso3) + (score4*peso4)))/peso1

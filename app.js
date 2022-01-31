@@ -44,7 +44,7 @@ function calculate(){
 function no_final_test(){
     //retorna o resultado do aluno sem a prova final
     let media =  Math.round((peso1*score1 + peso2*score2 + peso3*score3 + peso4*score4)/10) 
-    let resultado = result(media, false, score1, score2, score3, score4) 
+    let resultado = result(media, false) 
     let sit = resultado.sit
     let msg = resultado.msg
 

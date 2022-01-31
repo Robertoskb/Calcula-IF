@@ -40,9 +40,10 @@ function calculate(){
     : final_test()    
 }
 
-function no_final_test(){ 
-    let media =  Math.round((peso1*score1 + peso2*score2 + peso3*score3 + peso4*score4)/10) //calcula a media dos quatro bimestres sem a prova final
-    let resultado = result(media, false, score1, score2, score3, score4) //chama a função result que retorna a situação do aluno e uma mensagem
+function no_final_test(){
+    //retorna o resultado do aluno sem a prova final
+    let media =  Math.round((peso1*score1 + peso2*score2 + peso3*score3 + peso4*score4)/10) 
+    let resultado = result(media, false, score1, score2, score3, score4) 
     let sit = resultado.sit
     let msg = resultado.msg
 
@@ -56,7 +57,25 @@ function no_final_test(){
     <p>${msg}</p>`    
 }
 
+function final_test(){
+    //retorna o resultado do aluno com a prova final
+    let media = Math.round(media_final())
+    let resultado = result(media, true)
+    let msg = resultado.msg
+    let sit = resultado.sit
+
+    return `
+    <h1>Resultado: </h1>    
+    <h2 class='inline'>Situação: </h2>
+    <p class='inline' id = 'sit'>${sit}</p>
+
+    <strong class='inline'>Média: </strong>
+    <p class='inline'>${media}</p>
+    <p>${msg}</p>`
+}
+
 function result(media, provafinal = false){
+    //retorna a situação do aluno e uma mensagem
     let sit = ''
     let msg = ''
     let min = Math.round(score_min(media))
@@ -79,21 +98,6 @@ function result(media, provafinal = false){
     return{sit, msg}
 }
 
-function final_test(){
-    let media = Math.round(media_final())
-    let resultado = result(media, true)
-    let msg = resultado.msg
-    let sit = resultado.sit
-
-    return `
-    <h1>Resultado: </h1>    
-    <h2 class='inline'>Situação: </h2>
-    <p class='inline' id = 'sit'>${sit}</p>
-
-    <strong class='inline'>Média: </strong>
-    <p class='inline'>${media}</p>
-    <p>${msg}</p>`
-}
 
 function media_final(){ 
     //calcula a nota do aluno com a prova final, são 5 formulas, a que tiver o maior resultado será retornada

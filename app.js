@@ -21,7 +21,7 @@ function calculate(){
     score4 = parseFloat(document.getElementById('input4').value)  
     score5 = parseFloat(document.getElementById('input5').value)
 
-    /*verifca se as notas são válidas */
+    //verifca se as notas são válidas 
 
     if (score5 < 0 || score5 > 100){createtags.innerHTML='<h1>Notas Invalidas</h1>'; return}
 
@@ -34,7 +34,7 @@ function calculate(){
         }
     }
 
-    /* Se score5 não for um numero signfica que o aluno não fez a prova final */
+    //Se score5 não for um numero signfica que o aluno não fez a prova final 
 
     createtags.innerHTML = (isNaN(score5)) 
     ? no_final_test() 

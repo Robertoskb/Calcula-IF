@@ -1,2 +1,2 @@
 # Calcula-IF
- Projeto inspirado no IFCalc
+Projeto inspirado no IFCalc

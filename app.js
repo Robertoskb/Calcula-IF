@@ -23,9 +23,9 @@ function calculate(){
             return
         }
     }
-    
+
     createtags.innerHTML = (isNaN(score5)) 
-    ? no_final_test(score1, score2, score3, score4, score5) 
+    ? no_final_test(score1, score2, score3, score4) 
     : final_test(score1, score2, score3, score4, score5)    
 }
 

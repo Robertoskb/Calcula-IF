@@ -17,8 +17,7 @@ function calculate(){
 
     if (score5 < 0 || score5 > 100){createtags.innerHTML='<h1>Notas Invalidas</h1>'; return}
 
-    /*verifca se algumas das quatro primeiras notas são invalidas, a quinta nota a quinta nota é a da prova final e pode ou não ser NaN
-    */
+    /*verifca se algumas das quatro primeiras notas são invalidas, a quinta nota a quinta nota é a da prova final e pode ou não ser NaN */
 
     let arr = [score1, score2, score3, score4]
     for (let pos in arr){
@@ -28,7 +27,7 @@ function calculate(){
         }
     }
 
-    /* Se score5 não for um numero signfica que o aluno  não fez a prova final */
+    /* Se score5 não for um numero signfica que o aluno não fez a prova final */
 
     createtags.innerHTML = (isNaN(score5)) 
     ? no_final_test(score1, score2, score3, score4) 
@@ -102,7 +101,7 @@ function media_final(score1, score2, score3, score4, score5){
 }
 
 function score_min(media, score1, score2, score3, score4){
-    //calcula a nota necessaria na prova final, são 5 formulas, a que tiver o menor resultado retornada
+    //calcula a nota necessaria na prova final, são 5 formulas, a que tiver o menor resultado será retornada
     let simple_score = (media_necessaria * 2) - media
     let scoreSub1 =  (score_necessario - ((score2*peso2) + (score3*peso3) + (score4*peso4)))/peso1
     let scoreSub2 =  (score_necessario - ((score1*peso1) + (score3*peso3) + (score4*peso4)))/peso2

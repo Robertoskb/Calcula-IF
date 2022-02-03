@@ -12,8 +12,8 @@ el.addEventListener('mouseup', () => el.classList.remove('mousedown'))
 }
 
 else{
-    el.addEventListener('mouseenter', () => el.classList.add('touchenter'))
-    el.addEventListener('mouseout', () => el.classList.remove('touchenter'))
+    el.addEventListener('touchstart', () => el.classList.add('touchenter'))
+    el.addEventListener('touchend', () => el.classList.remove('touchenter'))
 }
 
 

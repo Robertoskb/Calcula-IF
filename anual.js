@@ -36,13 +36,13 @@ function calculate(){
 
     //verifca se as notas são válidas 
 
-    if (score5 < 0 || score5 > 100){createtags.innerHTML='<h1>Notas Invalidas</h1>'; return}
+    if (score5 < 0 || score5 > 100){createtags.innerHTML='<h1>Notas Inválidas</h1>'; return}
 
 
     let arr = [score1, score2, score3, score4, score5]
     for (let pos in arr){
         if(arr[pos] > 100 || arr[pos] < 0){
-            createtags.innerHTML='<h1 class="invalid">Notas Invalidas</h1>'
+            createtags.innerHTML='<h1 class="invalid">Notas Inválidas</h1>'
             return
         }
     }
@@ -68,7 +68,7 @@ function calculate(){
 
     else if(incompleto2){media = cursou2(); result(false, 2)}
 
-    else{createtags.innerHTML = '<h1 class="invalid">Notas Invalidas</h1>'
+    else{createtags.innerHTML = '<h1 class="invalid">Notas Inválidas</h1>'
         return
     }
 

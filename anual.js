@@ -3,6 +3,8 @@ let peso1 = 2
 let peso2 = 2
 let peso3 = 3
 let peso4 = 3
+
+let notamax = 100
 let media_necessaria = 60
 let soma_pesos = peso1+peso2+peso3+peso4
 let score_necessario_total = media_necessaria * soma_pesos
@@ -13,7 +15,6 @@ let score3
 let score4
 let score5
 
-let resultado
 let media
 let sit
 let msg
@@ -26,7 +27,7 @@ let cursou2 = () =>  Math.round(((peso1 * score1) + (peso2 * score2) + (peso3 * 
 let necessaria1 = () => Math.round((score_necessario_total - ((score1 * peso1) + (score2 * peso2) + (score3 * peso3))) / peso4)
 let necessaria2 = () => Math.round((score_necessario_total - ((score1 * peso1) + (score2 * peso2))) / (peso3 + peso4))
 
-function calculate(){
+function calculoAnual(){
     const createtags = document.getElementById('text')
     score1 = parseFloat(document.getElementById('input1').value)  
     score2 = parseFloat(document.getElementById('input2').value)   
@@ -35,9 +36,6 @@ function calculate(){
     score5 = parseFloat(document.getElementById('input5').value)
 
     //verifca se as notas são válidas 
-
-    if (score5 < 0 || score5 > 100){createtags.innerHTML='<h1>Notas Inválidas</h1>'; return}
-
 
     let arr = [score1, score2, score3, score4, score5]
     for (let pos in arr){
@@ -60,13 +58,13 @@ function calculate(){
     !isNaN(score1) && !isNaN(score2)
     
 
-    if (calculocompleto){media = media_final(); result(true)}
+    if (calculocompleto){media = media_final(); result(5)}
 
-    else if(calculonormal){media = mediaNormal(); result()}
+    else if(calculonormal){media = mediaNormal(); result(4)}
 
-    else if(incompleto1){media = cursou3(); result(false, 3)}
+    else if(incompleto1){media = cursou3(); result(3)}
 
-    else if(incompleto2){media = cursou2(); result(false, 2)}
+    else if(incompleto2){media = cursou2(); result(2)}
 
     else{createtags.innerHTML = '<h1 class="invalid">Notas Inválidas</h1>'
         return
@@ -83,11 +81,11 @@ function calculate(){
 
 }
 
-function result(provafinal = false, cursou = 4){ 
+function result(cursou){ 
     //retorna a situação do aluno e uma mensagem
     let aprovado = media >= media_necessaria
-    let final = media >= 20 && media < media_necessaria && provafinal === false && cursou === 4
-    let cursando = media < media_necessaria && cursou < 4 && provafinal === false
+    let final = media >= (media_necessaria - (notamax - media_necessaria)) && media < media_necessaria && cursou === 4
+    let cursando = media < media_necessaria && cursou < 4 
     
     if(aprovado){
         sit = 'Aprovado'
@@ -96,13 +94,13 @@ function result(provafinal = false, cursou = 4){
     
     else if (final) {
         sit = 'Prova Final'
-        msg = `Você precisa de ${score_min()} na prova final para ser aprovado :/`
+        msg = `Você precisa de ${score_min()} na prova final para ser aprovado :/` 
     }
 
     else if (cursando) {
         sit = 'Cursando'
-        msg = (cursou === 3)
-        ?`Você precisa de ${necessaria1()} no 4º Bimestre para ser aprovado`
+        msg = (cursou === 3) 
+        ?`Você precisa de ${necessaria1()} no 4º Bimestre para ser aprovado` 
         :`Você precisa de ${necessaria2()} no 3º e 4º Bimestre para ser aprovado` 
     }
 

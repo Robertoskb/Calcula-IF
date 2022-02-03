@@ -127,7 +127,7 @@ input[type="button"].enter{
 }
 
 input[type="button"].touchenter{
-    padding: 2px 5px;            
+    background-color: rgb(24, 155, 24);         
 }
 
 input[type="button"].mousedown{

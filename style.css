@@ -70,7 +70,8 @@ label{
 input[type="number"]:focus{
     box-shadow: 0 0 0 0;    
     outline: none;
-    border-bottom: 2px solid rgb(124, 22, 22);
+    border-bottom: 3px solid rgb(173, 23, 23);
+    
     
 }
 
@@ -95,16 +96,13 @@ input[type="number"]{
     
 }
 
-.inline{
-    display: inline-block;
+
+
+
+div.button{
+    padding-top: 20px;
+    text-align:center;
 }
-
-p#sit{
-    font-size: 1.3em;
-}
-
-
-.button{text-align:center;}
 
 input[type="button"]{
     background-color: green;
@@ -114,6 +112,33 @@ input[type="button"]{
     font-size: 1.5em;
     width: 200px;
     padding: 5px;
+
+    border: 4px solid rgb(15, 97, 15);
     border-radius: 3px;
+    transition: all 0.20s ease-in;
     
+}
+
+input[type="button"]:hover{
+    transform: translate(-2px, -5px); 
+    box-shadow: 2px 5px 0 rgb(15, 97, 15); 
+}
+
+input[type="button"].mousedown{
+    transform: translate(-2px, -3px);
+    box-shadow: 2px 3px 0 rgb(15, 97, 15)
+
+}
+
+.inline{
+    display: inline-block;
+}
+
+p#sit{
+    font-size: 1.3em;
+}
+
+h1.invalid{
+    padding-top: 20px;
+    text-align: center;
 }

@@ -58,7 +58,7 @@ header a.ativo{
         text-decoration:none;
         color: white;
         font-size: 1em;
-        padding:10px 33px;
+        padding:10px 40px;
         border-radius: 3px 3px 0px 0px;
         transition: all 0.3s ease-in;
     }

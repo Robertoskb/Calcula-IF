@@ -34,7 +34,7 @@ function calculoSemestral() {
     const incompleto = !isNaN(score1)
 
     calculate(calculocompleto, calculonormal, incompleto)
-    logResultParagraph()
+    
  
 
 }
@@ -44,6 +44,7 @@ function calculate(calculocompleto, calculonormal, incompleto){
     if(calculocompleto){
         media = media_final()
         result(3)
+        logResultParagraph()
 
         return
     }
@@ -51,6 +52,7 @@ function calculate(calculocompleto, calculonormal, incompleto){
     if (calculonormal){
         media = mediaNormal()
         result(2)
+        logResultParagraph()
 
         return
     }
@@ -58,6 +60,7 @@ function calculate(calculocompleto, calculonormal, incompleto){
     if(incompleto){
         media = cursou1()
         result(1)
+        logResultParagraph()
 
         return
     }

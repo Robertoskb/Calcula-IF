@@ -51,7 +51,7 @@ function calculoAnual(){
     !isNaN(score1) && !isNaN(score2)
     
     calculate(calculocompleto, calculonormal, incompleto1, incompleto2)
-    logResultParagraph()
+    
     
 }
 
@@ -59,7 +59,8 @@ function calculoAnual(){
 function calculate(calculocompleto, calculonormal, incompleto1, incompleto2){
     if (calculocompleto){
         media = media_final()
-        result(5)      
+        result(5)
+        logResultParagraph()   
 
         return
     }
@@ -67,6 +68,7 @@ function calculate(calculocompleto, calculonormal, incompleto1, incompleto2){
     if(calculonormal){
         media = mediaNormal()
         result(4)
+        logResultParagraph()
     
         return
     }
@@ -74,6 +76,7 @@ function calculate(calculocompleto, calculonormal, incompleto1, incompleto2){
     if(incompleto1){
         media = cursou3()
         result(3)
+        logResultParagraph()
     
         return
     }
@@ -81,6 +84,7 @@ function calculate(calculocompleto, calculonormal, incompleto1, incompleto2){
     if(incompleto2){
         media = cursou2()
         result(2)
+        logResultParagraph()
        
         return
     }

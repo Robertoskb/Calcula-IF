@@ -94,7 +94,7 @@ function result(cursou){
     
     else if (final) {
         sit = 'Prova Final'
-        msg = `Você precisa de ${score_min()} na prova final para ser aprovado :/` 
+        msg = `Você precisa de ${score_min()} na prova final para ser aprovado` 
     }
 
     else if (cursando) {

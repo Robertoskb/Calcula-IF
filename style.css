@@ -15,7 +15,7 @@ header {
     background-color: green;
     color: #ffffff;
     text-align: center;
-    padding:30px 30px 0px 30px;
+    padding:20px 20px 0px 20px;
 
     box-shadow: -1px 13px 10px rgba(0, 0, 0, 0.13);
 
@@ -180,8 +180,10 @@ h1.invalid{
 
 
 @media(max-width: 485px){
+    header h1{
+        font-size:1.3em;
+    }
     header a{
-        
         text-align: center;
         
         padding:10px 50px;

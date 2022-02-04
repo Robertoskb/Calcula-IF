@@ -1,11 +1,9 @@
-let peso1 = 2
-let peso2 = 3
-
-let notamax = 100
-let media_necessaria = 60 
-let soma_pesos = peso1 + peso2
-let score_necessaria_total = media_necessaria * soma_pesos
-
+const peso1 = 2
+const peso2 = 3
+const notamax = 100
+const media_necessaria = 60 
+const soma_pesos = peso1 + peso2
+const score_necessaria_total = media_necessaria * soma_pesos
 
 let score1
 let score2
@@ -15,13 +13,10 @@ let media
 let sit
 let msg
 
-let mediaNormal = () => Math.round(((score1 * peso1) + (score2 * peso2)) / soma_pesos)
-let cursou1 = () => Math.round(((score1 * peso1) + (0 * peso2)) / soma_pesos)
-
-let necessaria = () => Math.round((score_necessaria_total - ((score1 * peso1))) / peso2);
+const createtags = document.getElementById('text')
 
 function calculoSemestral() {
-    const createtags = document.getElementById('text')
+    
     score1 = parseFloat(document.getElementById('input1').value)  
     score2 = parseFloat(document.getElementById('input2').value)   
     score3 = parseFloat(document.getElementById('input3').value)
@@ -38,17 +33,44 @@ function calculoSemestral() {
     const calculonormal =  !isNaN(score1) && !isNaN(score2)
     const incompleto = !isNaN(score1)
 
-    if(calculocompleto){media = media_final(); result(3)}
+    calculate(calculocompleto, calculonormal, incompleto)
+    logResultParagraph()
+ 
 
-    else if (calculonormal){media = mediaNormal(); result(2)}
+}
 
-    else if(incompleto){media = cursou1(); result(1)}
-    
-    else{
-        createtags.innerHTML='<h1 class="invalid">Notas Inválidas</h1>'
+function calculate(calculocompleto, calculonormal, incompleto){
+
+    if(calculocompleto){
+        media = media_final()
+        result(3)
+
         return
     }
 
+    if (calculonormal){
+        media = mediaNormal()
+        result(2)
+
+        return
+    }
+
+    if(incompleto){
+        media = cursou1()
+        result(1)
+
+        return
+    }
+    
+    else{
+        createtags.innerHTML='<h1 class="invalid">Notas Inválidas</h1>'
+
+        return
+    }
+
+}
+
+function logResultParagraph(){
     createtags.innerHTML= `
     <h1>Resultado: </h1>
     <h2 class='inline'>Situação: </h2>
@@ -56,7 +78,7 @@ function calculoSemestral() {
 
     <p class='inline'><strong>Média: </strong></p>
     <p class='inline'>${media}</p>
-    <p>${msg}</p>` 
+    <p>${msg}</p>`  
 
 }
 
@@ -65,27 +87,36 @@ function result(cursou){
     cursando = media < media_necessaria && cursou === 1
     final = media >= (media_necessaria - (notamax - media_necessaria)) && media < media_necessaria && cursou === 2
 
+    getResultMessage(aprovado, cursando, final)
+
+}
+
+function getResultMessage(aprovado, cursando, final) {
     if (aprovado){
         sit = 'Aprovado'
         msg = 'Parabéns, você está aprovado! :)'
+        
+        return
     }
 
-    else if(cursando){
+    if(cursando){
         sit = 'Cursando'
         msg = `Você precisa de ${necessaria()} no 2º Bimestre para ser aprovado`
         
+        return
     }
 
-    else if(final){
+    if(final){
         sit = 'Prova Final'
         msg = `Você precisa de ${score_min()} na prova final para ser aprovado`
+
+        return
     }
 
     else {
         sit = 'Reprovado'
         msg = 'Você está reprovado :('
     }
-
 }
 
 function media_final(){
@@ -104,3 +135,8 @@ function score_min(){
     return Math.round(Math.min(...[simple_score, scoreSub1, scoreSub2]))
 
 }
+
+const mediaNormal = () => Math.round(((score1 * peso1) + (score2 * peso2)) / soma_pesos)
+const cursou1 = () => Math.round(((score1 * peso1) + (0 * peso2)) / soma_pesos)
+
+const necessaria = () => Math.round((score_necessaria_total - ((score1 * peso1))) / peso2);

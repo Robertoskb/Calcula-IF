@@ -75,7 +75,7 @@ function calculoAnual(){
     <h2 class='inline'>Situação: </h2>
     <p class='inline' id = 'sit'>${sit}</p>
 
-    <strong class='inline'>Média: </strong>
+    <p class='inline'><strong>Média: </strong></p>
     <p class='inline'>${media}</p>
     <p>${msg}</p>`  
 

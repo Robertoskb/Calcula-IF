@@ -17,7 +17,6 @@ header {
     text-align: center;
     padding:30px 30px 0px 30px;
 
-
     box-shadow: -1px 13px 10px rgba(0, 0, 0, 0.13);
 
 }
@@ -31,8 +30,7 @@ header nav{
     justify-content:center;
     
     margin:auto;
-    max-width:400px;
-    min-width: 300px;
+
 
 }
 
@@ -53,17 +51,7 @@ header a.ativo{
     border-bottom: 2px solid red;
 }
 
-@media(max-widh: 300px){
-    header a{
-        text-decoration:none;
-        color: white;
-        font-size: 1em;
-        padding:10px 40px;
-        border-radius: 3px 3px 0px 0px;
-        transition: all 0.3s ease-in;
-    }
 
-}
 
 section {
 
@@ -73,7 +61,7 @@ section {
     margin: auto;
 
     max-width: 400px;
-    min-width: 300px;
+    min-width: 270px;
     
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
@@ -136,7 +124,7 @@ input[type="number"]{
     border-bottom: 2px solid rgba(0, 0, 0);
     
     position: absolute;
-    transform: translatex(400%)
+    transform: translatex(550%)
 
     
 }
@@ -148,7 +136,7 @@ div.button{
 
 input[type="button"]{
     background-color: green;
-    color: white;
+    color: white; 
     
     
     font-size: 1.5em;
@@ -159,7 +147,7 @@ input[type="button"]{
     border-radius: 3px;
     transition: all 0.10s ease-in;
     
-}
+} 
 
 input[type="button"].enter{
     transform: translate(-2px, -5px);
@@ -189,4 +177,86 @@ p#sit{
 h1.invalid{
     padding-top: 20px;
     text-align: center;
+}
+
+
+@media(max-width: 485px){
+    header a{
+        
+        text-align: center;
+        
+        padding:10px 50px;
+   
+    }
+
+    section{
+        padding:7px;
+    }
+
+    input[type="number"]{
+        transform: translatex(500%)
+
+    }
+
+}
+
+@media(max-width: 395px){
+    header a{
+        
+        text-align: center;
+        
+        padding:10px 30px;
+   
+    }
+
+    section{
+        padding:7px;
+    }
+
+    input[type="number"]{
+        transform: translatex(450%)
+
+    }
+
+}
+
+@media(max-width: 350px){
+    header a{
+        
+        text-align: center;
+        
+        padding:10px 20px;
+   
+    }
+
+    section{
+        padding:7px;
+    }
+
+    input[type="number"]{
+        transform: translatex(400%)
+
+    }
+
+}
+
+
+@media(max-width: 320px){
+    header a{
+        
+        text-align: center;
+        
+        padding:10px 20px;
+   
+    }
+
+    section{
+        padding:5px;
+    }
+
+    input[type="number"]{
+        transform: translatex(325%)
+
+    }
+
 }

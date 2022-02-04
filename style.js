@@ -1,6 +1,5 @@
-
-let el = document.getElementById('b')
-let checkDevice = Modernizr.touchevents 
+const el = document.getElementById('b')
+const checkDevice = Modernizr.touchevents 
 
 if (!checkDevice){
 el.addEventListener('mouseenter', () => el.classList.add('enter'))

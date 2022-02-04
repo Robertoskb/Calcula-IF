@@ -1,13 +1,12 @@
 // Valores importates para o calculo da media do aluno
-let peso1 = 2
-let peso2 = 2
-let peso3 = 3
-let peso4 = 3
-
-let notamax = 100
-let media_necessaria = 60
-let soma_pesos = peso1+peso2+peso3+peso4
-let score_necessario_total = media_necessaria * soma_pesos
+const peso1 = 2
+const peso2 = 2
+const peso3 = 3 
+const peso4 = 3
+const notamax = 100
+const media_necessaria = 60
+const soma_pesos = peso1+peso2+peso3+peso4 
+const score_necessario_total = media_necessaria * soma_pesos
 
 let score1
 let score2 
@@ -19,16 +18,10 @@ let media
 let sit
 let msg
 
-let mediaNormal = () => Math.round(((peso1 * score1) + (peso2 * score2) + (peso3 * score3) + (peso4 * score4)) / soma_pesos)
-
-let cursou3 = () => Math.round(((peso1 * score1) + (peso2 * score2) + (peso3 * score3) + (peso4 * 0)) / soma_pesos)
-let cursou2 = () =>  Math.round(((peso1 * score1) + (peso2 * score2) + (peso3 * 0) + (peso4 * 0)) / soma_pesos)
-
-let necessaria1 = () => Math.round((score_necessario_total - ((score1 * peso1) + (score2 * peso2) + (score3 * peso3))) / peso4)
-let necessaria2 = () => Math.round((score_necessario_total - ((score1 * peso1) + (score2 * peso2))) / (peso3 + peso4))
+const createtags = document.getElementById('text')
 
 function calculoAnual(){
-    const createtags = document.getElementById('text')
+    
     score1 = parseFloat(document.getElementById('input1').value)  
     score2 = parseFloat(document.getElementById('input2').value)   
     score3 = parseFloat(document.getElementById('input3').value)
@@ -57,19 +50,50 @@ function calculoAnual(){
     const incompleto2 =
     !isNaN(score1) && !isNaN(score2)
     
+    calculate(calculocompleto, calculonormal, incompleto1, incompleto2)
+    logResultParagraph()
+    
+}
 
-    if (calculocompleto){media = media_final(); result(5)}
 
-    else if(calculonormal){media = mediaNormal(); result(4)}
+function calculate(calculocompleto, calculonormal, incompleto1, incompleto2){
+    if (calculocompleto){
+        media = media_final()
+        result(5)      
 
-    else if(incompleto1){media = cursou3(); result(3)}
-
-    else if(incompleto2){media = cursou2(); result(2)}
-
-    else{createtags.innerHTML = '<h1 class="invalid">Notas Inválidas</h1>'
         return
     }
 
+    if(calculonormal){
+        media = mediaNormal()
+        result(4)
+    
+        return
+    }
+
+    if(incompleto1){
+        media = cursou3()
+        result(3)
+    
+        return
+    }
+
+    if(incompleto2){
+        media = cursou2()
+        result(2)
+       
+        return
+    }
+
+    else{
+        createtags.innerHTML = '<h1 class="invalid">Notas Inválidas</h1>'
+
+        return
+    }
+
+}
+
+function logResultParagraph(){
     createtags.innerHTML= `
     <h1>Resultado: </h1>
     <h2 class='inline'>Situação: </h2>
@@ -83,25 +107,36 @@ function calculoAnual(){
 
 function result(cursou){ 
     //retorna a situação do aluno e uma mensagem
-    let aprovado = media >= media_necessaria
-    let final = media >= (media_necessaria - (notamax - media_necessaria)) && media < media_necessaria && cursou === 4
-    let cursando = media < media_necessaria && cursou < 4 
-    
+    const aprovado = media >= media_necessaria
+    const final = media >= (media_necessaria - (notamax - media_necessaria)) && media < media_necessaria && cursou === 4
+    const cursando = media < media_necessaria && cursou < 4
+
+    getResultMessage(aprovado, final, cursando, cursou)
+
+}
+
+function getResultMessage(aprovado, final, cursando, cursou){
     if(aprovado){
         sit = 'Aprovado'
         msg = 'Parabéns, Você está aprovado! :)'
+
+        return
     }
     
-    else if (final) {
+    if (final) {
         sit = 'Prova Final'
-        msg = `Você precisa de ${score_min()} na prova final para ser aprovado` 
+        msg = `Você precisa de ${score_min()} na prova final para ser aprovado`
+        
+        return
     }
 
-    else if (cursando) {
+    if (cursando) {
         sit = 'Cursando'
         msg = (cursou === 3) 
         ?`Você precisa de ${necessaria1()} no 4º Bimestre para ser aprovado` 
-        :`Você precisa de ${necessaria2()} no 3º e 4º Bimestre para ser aprovado` 
+        :`Você precisa de ${necessaria2()} no 3º e 4º Bimestre para ser aprovado`
+        
+        return
     }
 
     else {
@@ -132,3 +167,11 @@ function score_min(){
 
     return Math.round(Math.min(...[simple_score, scoreSub1, scoreSub2, scoreSub3, scoreSub4])) 
 }
+
+const mediaNormal = () => Math.round(((peso1 * score1) + (peso2 * score2) + (peso3 * score3) + (peso4 * score4)) / soma_pesos)
+
+const cursou3 = () => Math.round(((peso1 * score1) + (peso2 * score2) + (peso3 * score3) + (peso4 * 0)) / soma_pesos)
+const cursou2 = () =>  Math.round(((peso1 * score1) + (peso2 * score2) + (peso3 * 0) + (peso4 * 0)) / soma_pesos)
+
+const necessaria1 = () => Math.round((score_necessario_total - ((score1 * peso1) + (score2 * peso2) + (score3 * peso3))) / peso4)
+const necessaria2 = () => Math.round((score_necessario_total - ((score1 * peso1) + (score2 * peso2))) / (peso3 + peso4))

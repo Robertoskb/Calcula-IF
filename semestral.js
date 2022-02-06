@@ -5,15 +5,9 @@ const media_necessaria = 60
 const soma_pesos = peso1 + peso2
 const score_necessaria_total = media_necessaria * soma_pesos
 
-let media
-let sit
-let msg
-let color
-
-const createtags = document.getElementById('text')
-
 function calculoSemestral() {
     
+    createtags = document.getElementById('text')
     score1 = parseFloat(document.getElementById('input1').value)  
     score2 = parseFloat(document.getElementById('input2').value)   
     score3 = parseFloat(document.getElementById('input3').value)
@@ -21,7 +15,7 @@ function calculoSemestral() {
     let arr = [score1, score2, score3]
     for (let pos in arr){
         if(arr[pos] > 100 || arr[pos] < 0){
-            logResultParagraph(true)
+            logResultParagraph(undefined, undefined,undefined, undefined, true)
             return
         }
     }
@@ -31,44 +25,49 @@ function calculoSemestral() {
     const incompleto = !isNaN(score1)
 
     calculate(calculocompleto, calculonormal, incompleto)
-    
- 
 
 }
 
 function calculate(calculocompleto, calculonormal, incompleto){
+    var media, sit, msg, color 
 
     if(calculocompleto){
         media = media_final()
-        result(3)
-        logResultParagraph()
+        sit = result(3, media).sit
+        msg = result(3, media).msg
+        color = result(3, media).color
+        logResultParagraph(media, sit, msg, color)
 
         return
     }
 
     if (calculonormal){
         media = mediaNormal()
-        result(2)
-        logResultParagraph()
+        sit = result(2, media).sit
+        msg = result(2, media).msg
+        color = result(2, media).color
+        logResultParagraph(media, sit, msg, color)
 
         return
     }
 
     if(incompleto){
         media = cursou1()
-        result(1)
-        logResultParagraph()
+        sit = result(1, media).sit
+        msg = result(1, media).msg
+        color = result(1, media).color
+        logResultParagraph(media, sit, msg, color)
 
         return
     }
     
     else{
-        logResultParagraph(true)
+        logResultParagraph(media, sit, msg, color, true)
     }
 
 }
 
-function logResultParagraph(invalid = false){
+function logResultParagraph(media, sit, msg, color, invalid = false){
     if (!invalid){
         createtags.innerHTML= `
         <div class='x' onclick='getoutResult()'>x</div>
@@ -90,22 +89,24 @@ function logResultParagraph(invalid = false){
 
 }
 
-function result(cursou){
+function result(cursou, media){
     aprovado = media >= media_necessaria
     cursando = media < media_necessaria && cursou === 1
     final = media >= (media_necessaria - (notamax - media_necessaria)) && media < media_necessaria && cursou === 2
 
-    getResultMessage(aprovado, cursando, final)
+    return getResultMessage(aprovado, cursando, final, media)
 
 }
 
-function getResultMessage(aprovado, cursando, final) {
+function getResultMessage(aprovado, cursando, final, media) {
+    var sit, msg, color
+
     if (aprovado){
         sit = 'Aprovado'
         msg = 'Parabéns, você está aprovado! :)'
         color = 'rgb(24, 155, 24)'
         
-        return
+        return {sit, msg, color}
     }
 
     if(cursando){
@@ -113,21 +114,23 @@ function getResultMessage(aprovado, cursando, final) {
         msg = `Você precisa de ${necessaria()} no 2º Bimestre para ser aprovado`
         color = 'rgb(24, 155, 24)'
         
-        return
+        return {sit, msg, color}
     }
 
     if(final){
         sit = 'Prova Final'
-        msg = `Você precisa de ${score_min()} na prova final para ser aprovado`
+        msg = `Você precisa de ${score_min(media)} na prova final para ser aprovado`
         color = 'yellow'
 
-        return
+        return {sit, msg, color}
     }
 
     else {
         sit = 'Reprovado'
         msg = 'Você está reprovado :('
         color = 'rgb(173, 23, 23)'
+
+        return {sit, msg, color}
     }
 }
 
@@ -139,7 +142,7 @@ function media_final(){
     return Math.round(Math.max(...[simple_score, scoreSub1, scoreSub2]))
 }
 
-function score_min(){
+function score_min(media){
     let simple_score = (media_necessaria * 2) - media
     let scoreSub1 = (score_necessaria_total - ((score2 * peso2))) / peso1
     let scoreSub2 = (score_necessaria_total - ((score1 * peso1))) / peso2

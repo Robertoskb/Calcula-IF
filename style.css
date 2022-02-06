@@ -182,7 +182,10 @@ div#text .x{
     cursor:pointer;
 }
 
-div#text h1, h2, p{padding-left: 10px;}
+div#text h1, h2, p{
+    padding-left: 10px; 
+    border-radius:4px 4px 0px 0px;
+}
 
 .inline{display: inline-block;}
 

@@ -30,8 +30,6 @@ header nav{
     justify-content:center;
     
     margin:auto;
-
-
 }
 
 header a{
@@ -99,13 +97,7 @@ label{
 
 }
 
-input[type="number"]:focus{
-    box-shadow: 0 0 0 0;    
-    outline: none;
-    border-bottom: 3px solid rgb(173, 23, 23);
-    
-    
-}
+
 
 input[type="number"]{
 
@@ -126,6 +118,12 @@ input[type="number"]{
     transform: translatex(550%)
 
     
+}
+
+input[type="number"]:focus{
+    box-shadow: 0 0 0 0;    
+    outline: none;
+    border-bottom: 3px solid rgb(173, 23, 23);  
 }
 
 div.button{
@@ -150,9 +148,7 @@ input[type="button"]{
 
 input[type="button"].enter{
     transform: translate(-2px, -5px);
-    
-    box-shadow: 2px 5px 0 rgb(15, 97, 15);
-                
+    box-shadow: 2px 5px 0 rgb(15, 97, 15);                
 }
 
 input[type="button"].touchenter{
@@ -161,22 +157,53 @@ input[type="button"].touchenter{
 
 input[type="button"].mousedown{
     transform: translate(-2px, -3px);
-    box-shadow: 2px 3px 0 rgb(15, 97, 15)
-
+    box-shadow: 2px 3px 0 rgb(15, 97, 15);
 }
 
-.inline{
-    display: inline-block;
+div#text{
+    display:none;
+    border: 1px solid black;
+    border-radius:5px;
+    margin-top: 5px;
+    margin-right: 1px;    
+    box-shadow: 4px 3px 5px 0px rgba(0, 0, 0, 0.435);
+    transition: 0.5s;
+}
+
+div#text:hover{
+    transform: translate(-2px, -5px);
+    box-shadow: 6px 6px 5px 0px rgb(0 0 0 / 44%);
+}
+
+div#text .x{
+    float: right;
+    margin-right:10px;
+    font-size:20px;
+    cursor:pointer;
+}
+
+div#text h1, h2, p{padding-left: 10px;}
+
+.inline{display: inline-block;}
+
+h1.invalid{
+    background-color: rgb(173, 23, 23);
+    text-align: center;
+    
+}
+
+p.invalid{
+    font-size:.89em;
+    text-align:center;
 }
 
 p#sit{
+    padding: 0;
     font-size: 1.3em;
 }
+p#md{padding:0;}
 
-h1.invalid{
-    padding-top: 20px;
-    text-align: center;
-}
+
 
 
 @media(max-width: 485px){
@@ -202,16 +229,9 @@ h1.invalid{
 }
 
 @media(max-width: 395px){
-    header a{
-        
-    
-        
+    header a{   
         padding:10px 30px;
    
-    }
-
-    section{
-        padding:7px;
     }
 
     input[type="number"]{
@@ -227,10 +247,6 @@ h1.invalid{
    
     }
 
-    section{
-        padding:7px;
-    }
-
     input[type="number"]{
         transform: translatex(400%)
 
@@ -239,7 +255,7 @@ h1.invalid{
 }
 
 
-@media(max-width: 320px){
+@media(max-width: 332px){
     header a{
         padding:10px 20px;
    
@@ -253,6 +269,8 @@ h1.invalid{
         transform: translatex(325%)
 
     }
+    
+    div#text h1, h2, p{padding-left: 5px;}
 
 
 }

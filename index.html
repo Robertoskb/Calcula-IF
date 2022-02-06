@@ -29,33 +29,33 @@
     
                 <div class="bis">
                     <div class="bi">
-                        <label>1º Bimestre:</label>
+                        <label for='input1'>1º Bimestre:</label>
                         <input id="input1" min="0" max="100" type="number">
                     </div>
 
                     <div class="bi">
-                        <label>2º Bimestre:</label>
+                        <label for='input2'>2º Bimestre:</label>
                         <input id="input2" min="0" max="100" type="number">
                     </div>
                     <div class="bi">
-                        <label>3º Bimestre:</label>
+                        <label for='input3'>3º Bimestre:</label>
                         <input id="input3" min="0" max="100" type="number">
                     </div>
                     <div class="bi">
-                        <label>4º Bimestre:</label>
+                        <label for='input4'>4º Bimestre:</label>
                         <input id="input4" min="0" max="100" type="number">
                     </div>
                     <div class="bi">
-                        <label>Prova Final:</label>
+                        <label for='input5'>Prova Final:</label>
                         <input id="input5" min="0" max="100" type="number">
                     </div>
                 </div>
 
-                <div class="button" ><input id="b" type="button" value="Calcular" onclick="calculoAnual()"></div>
+                <div class="button" ><input id="b" type="button" value="Calcular" onclick="calculoAnual(), logResult()"></div>
                 
             </form>
             
-            <p id="text"></p>
+            <div id="text"></div>
             
             
         </section>

@@ -29,25 +29,25 @@
     
                 <div class="bis">
                     <div class="bi">
-                        <label>1º Bimestre:</label>
+                        <label for='input1'>1º Bimestre:</label>
                         <input id="input1" min="0" max="100" type="number">
                     </div>
 
                     <div class="bi">
-                        <label>2º Bimestre:</label>
+                        <label for='input2'>2º Bimestre:</label>
                         <input id="input2" min="0" max="100" type="number">
                     </div>
                     <div class="bi">
-                        <label>Prova Final:</label>
+                        <label for='input3'>Prova Final:</label>
                         <input id="input3" min="0" max="100" type="number">
                     </div>
                 </div>
 
-                <div class="button" ><input id="b" type="button" value="Calcular" onclick="calculoSemestral()"></div>
+                <div class="button" ><input id="b" type="button" value="Calcular" onclick="calculoSemestral(), logResult()"></div>
                 
             </form>
             
-            <p id="text"></p>
+            <div id="text"></div>
             
             
         </section>

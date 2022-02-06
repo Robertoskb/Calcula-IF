@@ -5,13 +5,10 @@ const media_necessaria = 60
 const soma_pesos = peso1 + peso2
 const score_necessaria_total = media_necessaria * soma_pesos
 
-let score1
-let score2
-let score3
-
 let media
 let sit
 let msg
+let color
 
 const createtags = document.getElementById('text')
 
@@ -24,7 +21,7 @@ function calculoSemestral() {
     let arr = [score1, score2, score3]
     for (let pos in arr){
         if(arr[pos] > 100 || arr[pos] < 0){
-            createtags.innerHTML='<h1 class="invalid">Notas Inválidas</h1>'
+            logResultParagraph(true)
             return
         }
     }
@@ -66,22 +63,30 @@ function calculate(calculocompleto, calculonormal, incompleto){
     }
     
     else{
-        createtags.innerHTML='<h1 class="invalid">Notas Inválidas</h1>'
-
-        return
+        logResultParagraph(true)
     }
 
 }
 
-function logResultParagraph(){
-    createtags.innerHTML= `
-    <h1>Resultado: </h1>
-    <h2 class='inline'>Situação: </h2>
-    <p class='inline' id = 'sit'>${sit}</p>
+function logResultParagraph(invalid = false){
+    if (!invalid){
+        createtags.innerHTML= `
+        <div class='x' onclick='getoutResult()'>x</div>
+        <h1 style='background-color:${color};' class='result'>Resultado: </h1>
+        <h2 class='inline'>Situação: </h2>
+        <p class='inline' id='sit'>${sit}</p>
 
-    <p class='inline'><strong>Média: </strong></p>
-    <p class='inline'>${media}</p>
-    <p>${msg}</p>`  
+        <p class='inline md'><strong>Média: </strong></p>
+        <p class='inline' id='md'>${media}</p>
+        <p>${msg}</p>`}
+    
+    else{
+        createtags.innerHTML = `
+        <div class='x' onclick='getoutResult()'>x</div>
+        <h1 class="invalid">Notas Inválidas</h1>
+        <p class="invalid">Verifique se você preencheu os campos corretamente</p>`
+
+    }  
 
 }
 
@@ -98,6 +103,7 @@ function getResultMessage(aprovado, cursando, final) {
     if (aprovado){
         sit = 'Aprovado'
         msg = 'Parabéns, você está aprovado! :)'
+        color = 'rgb(24, 155, 24)'
         
         return
     }
@@ -105,6 +111,7 @@ function getResultMessage(aprovado, cursando, final) {
     if(cursando){
         sit = 'Cursando'
         msg = `Você precisa de ${necessaria()} no 2º Bimestre para ser aprovado`
+        color = 'rgb(24, 155, 24)'
         
         return
     }
@@ -112,6 +119,7 @@ function getResultMessage(aprovado, cursando, final) {
     if(final){
         sit = 'Prova Final'
         msg = `Você precisa de ${score_min()} na prova final para ser aprovado`
+        color = 'yellow'
 
         return
     }
@@ -119,6 +127,7 @@ function getResultMessage(aprovado, cursando, final) {
     else {
         sit = 'Reprovado'
         msg = 'Você está reprovado :('
+        color = 'rgb(173, 23, 23)'
     }
 }
 
